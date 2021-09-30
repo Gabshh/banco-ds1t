@@ -1,25 +1,68 @@
 package br.senai.sp.jandira.model;
 
 public class Conta {
-	
+
 	public String tipo;
-	public String numero;
+	private String numero;
 	public String numeroAgencia;
 	public String titular;
-	public double saldo;
+	private double saldo;
 	
+	//Método construtor 
+	
+	public Conta(String numeroConta) {
+		numero = numeroConta;
+	}
+
 	public void depositar(double valorDeposito) {
-		saldo += valorDeposito;
+
+		if (valorDeposito <= 0) {
+
+			System.out.println("Valor incorreto, impossível efetuar esse depósito !!");
+		
+		} else {
+
+			System.out.println("Depósito realizado !!");
+			saldo += valorDeposito;
+
+		}
+
 	}
-	
-	public void sacar(double valorSaque) {
-		saldo -= valorSaque;
-	}
-	
-	public void transferir() {
+
+	public boolean sacar(double valorSaque) {
+		
+		if (valorSaque < 0) {
+			
+			System.out.println("Valor incorreto, impossível sacar essa quantia !!");
+			return false;
+			
+		}else if (valorSaque > saldo) {
+			
+			System.out.println("Saldo insuficiente, impossível sacar essa quantia !!");
+			return false;
+			
+		}else {
+			System.out.println("Saque realizado !!");
+			saldo -= valorSaque;
+			return true;
+		}
 		
 	}
-	
+
+	public void transferir(Conta contaDestino, double valorTransferencia) {
+		
+		boolean resultado = sacar(valorTransferencia);
+		
+		if (resultado) {
+			contaDestino.depositar(valorTransferencia);
+			System.out.println("Transferência efetuada !!");
+		}else {
+			System.out.println("Não foi possível efetuar a transferência !!");
+		}
+		
+
+	}
+
 	public void exibirDetalhes() {
 		System.out.println();
 		System.out.println("---------------------");
@@ -29,5 +72,5 @@ public class Conta {
 		System.out.printf("Tipo: %s\n", tipo);
 		System.out.printf("Saldo: %s\n", saldo);
 	}
-	
+
 }
