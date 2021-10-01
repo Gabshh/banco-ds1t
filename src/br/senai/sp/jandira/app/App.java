@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.app;
 
+import br.senai.sp.jandira.lista.TipoConta;
 import br.senai.sp.jandira.model.Conta;
 
 public class App {
@@ -9,24 +10,27 @@ public class App {
 		// Criação da conta da Maria
 		Conta contaMaria = new Conta("7845-8");
 		contaMaria.titular = "Maria Antonieta";
-		contaMaria.numeroAgencia = "4214-9";
+		contaMaria.getNumeroAgencia("4214-9");
 		contaMaria.depositar(500.0);
-		contaMaria.tipo = "Corrente";
+		contaMaria.setTipo(TipoConta.CORRENTE);
+		System.out.println("----->" + contaMaria.getTipo()); 
 		
 		// Criação da conta do Pedro
 		Conta contaPedro = new Conta("6547-6");
 		contaPedro.titular = "Pedro Cabral";
 
 		contaPedro.depositar(200.0);
-		contaPedro.tipo = "Poupança";
-		contaPedro.numeroAgencia = "4214-9";
+		contaPedro.setTipo(TipoConta.POUPANCA);
+		contaPedro.getNumeroAgencia ("4214-9");
+		System.out.println("----->" + contaPedro.getTipo());
 		
 		// Criação da conta da Ana
 		Conta contaAna = new Conta("23145-9");
 		contaAna.titular = "Ana Gomes";
 		contaAna.depositar(2000.0);
-		contaAna.tipo = "Corrente";
-		contaAna.numeroAgencia = "4214-9";
+		contaAna.setTipo(TipoConta.SALARIO);
+		contaAna.getNumeroAgencia ("4214-9");
+		System.out.println("----->" + contaAna.getTipo());
 		
 		
 		// Exibir os detalhes das contas
@@ -40,7 +44,7 @@ public class App {
 		
 		// Depositar 100 reais na conta da Maria :)
 		
-		contaMaria.depositar(200);
+		contaMaria.depositar(100);
 		contaMaria.exibirDetalhes();
 		
 		System.out.println();
@@ -48,7 +52,7 @@ public class App {
 		System.out.println();
 		
 		// Sacar 100 reais da conta da Maria
-		contaMaria.sacar(800);
+		contaMaria.sacar(100);
 		contaMaria.exibirDetalhes();
 		
 		System.out.println();
@@ -62,7 +66,6 @@ public class App {
 		contaPedro.exibirDetalhes();
 		
 		
-
 	}
 
 }
