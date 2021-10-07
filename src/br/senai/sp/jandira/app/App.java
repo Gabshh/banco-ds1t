@@ -1,35 +1,63 @@
 package br.senai.sp.jandira.app;
 
 import br.senai.sp.jandira.lista.TipoConta;
+import br.senai.sp.jandira.model.Agencia;
+import br.senai.sp.jandira.model.Cliente;
 import br.senai.sp.jandira.model.Conta;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		// Criação da conta da Maria
+		// DEFINIR AGÊNCIA
+		Agencia mainAgencia = new Agencia();
+		mainAgencia.setNumeroAgencia("4214-9");
+		
+		
+		
+		// CRIAR A CLIENTE MARIA
+		Cliente clienteMaria = new Cliente();
+		clienteMaria.setNome("Maria Antonieta");
+		clienteMaria.setEmail("Maria@ig.com.br");
+		clienteMaria.setSalario(1500.00);
+		
+		
+		// CRIAÇÃO DA CONTA DA MARIA
 		Conta contaMaria = new Conta("7845-8");
-		contaMaria.titular = "Maria Antonieta";
-		contaMaria.getNumeroAgencia("4214-9");
+		contaMaria.setCliente(clienteMaria);
+		contaMaria.setAgencia(mainAgencia);
 		contaMaria.depositar(500.0);
 		contaMaria.setTipo(TipoConta.CORRENTE);
 		System.out.println("----->" + contaMaria.getTipo()); 
 		
-		// Criação da conta do Pedro
+		
+		// CRIAR O CLIENTE PEDRO
+		
+		Cliente clientePedro = new Cliente();
+		clientePedro.setNome("Pedro Cabral");
+		clientePedro.setEmail("Pedro@ig.com.br");
+		clientePedro.setSalario(2500.00);
+		
+		// CRIAÇÃO DA CONTA DO PEDRO
 		Conta contaPedro = new Conta("6547-6");
-		contaPedro.titular = "Pedro Cabral";
-
+		contaPedro.setCliente(clientePedro);
 		contaPedro.depositar(200.0);
 		contaPedro.setTipo(TipoConta.POUPANCA);
-		contaPedro.getNumeroAgencia ("4214-9");
+		contaPedro.setAgencia(mainAgencia);
 		System.out.println("----->" + contaPedro.getTipo());
 		
-		// Criação da conta da Ana
+		// CRIAR A CLIENTE ANA
+		Cliente clienteAna = new Cliente();
+		clienteAna.setNome("Ana Gomes");
+		clienteAna.setEmail("Ana@ig.com.br");
+		clienteAna.setSalario(5000.00);
+		
+		// CRIAÇÃO DA CONTA DA ANA
 		Conta contaAna = new Conta("23145-9");
-		contaAna.titular = "Ana Gomes";
+		contaAna.setCliente(clienteAna);
 		contaAna.depositar(2000.0);
 		contaAna.setTipo(TipoConta.SALARIO);
-		contaAna.getNumeroAgencia ("4214-9");
+		contaAna.setAgencia(mainAgencia);
 		System.out.println("----->" + contaAna.getTipo());
 		
 		
